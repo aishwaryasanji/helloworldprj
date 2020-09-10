@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration status="trace" packages="au.edu.vu.appenders,com.mulesoft.ch.logging.appender">
+
+    <!--These are some of the loggers you can enable. 
+        There are several more you can find in the documentation. 
+        Besides this log4j configuration, you can also use Java VM environment variables
+        to enable other logs like network (-Djavax.net.debug=ssl or all) and 
+        Garbage Collector (-XX:+PrintGC). These will be append to the console, so you will 
+        see them in the mule_ee.log file. -->
+
+
+    <Appenders>
+    <Http name="Splunk" url="http://localhost:8098/services/collector/raw">         
+        <Property name="Authorization" value="Splunk 4b5020d8-36fe-451e-b1e3-5ff2504d6c73" />            
+         <PatternLayout pattern="[%d{MM-dd HH:mm:ss}] %-5p %c{1} [%t]: %m%n"/>       
+          </Http>
+
+      <RollingFile name="file" fileName="D:\Logs\Documents\${sys:pathLogFile}-apiexample.log" 
+                 filePattern="D:\Logs\Documents\${sys:pathLogFile}-%d{yyyy-MM-dd}-apiexample-%i.log">
+            <PatternLayout pattern="%d [%t] %-5p [processor: %X{processorPath}; event: %X{correlationId}] %c - %m%n" />
+            <SizeBasedTriggeringPolicy size="10 KB" />
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        
+        <!-- Http Logger shows wire traffic on DEBUG. -->
+        <!--AsyncLogger name="org.mule.service.http.impl.service.HttpMessageLogger" level="DEBUG" /-->
+        <AsyncLogger name="org.mule.service.http" level="WARN"/>
+        <AsyncLogger name="org.mule.extension.http" level="WARN"/>
+    
+              <!-- Mule logger -->        
+        <AsyncLogger name="org.mule.runtime.core.internal.processor.LoggerMessageProcessor" level="INFO"/>
+
+        <AsyncRoot level="INFO">
+            <AppenderRef ref="file" level="INFO"/> 
+            <AppenderRef ref="Splunk" level="INFO"/> 
+        </AsyncRoot> 
+      <!--   <AsyncRoot level="INFO">   <AppenderRef ref="Splunk" /></AsyncRoot>   -->
+    </Loggers>
+</Configuration>
