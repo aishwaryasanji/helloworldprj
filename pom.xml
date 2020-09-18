@@ -37,7 +37,7 @@
                                    <target>demoserver</target>
                                    <targetType>server</targetType>
                                    <username>aishwaryasanji</username>
-                                   <password>Chandler123@</password>
+                                   <password>Mulesoft123@!</password>
                                    <environment>Sandbox</environment>>
                     </armDeployment>
                            <sharedLibraries>
