@@ -16,7 +16,7 @@
           </Http>
 
       <RollingFile name="file" fileName="D:\Logs\Documents\${sys:pathLogFile}-apiexample.log" 
-                 filePattern="D:\Logs\Documents\${sys:pathLogFile}-%d{yyyy-MM-dd}-apiexample-%i.log">
+                 filePattern="D:\Logs\Documents\helloworld.log">
             <PatternLayout pattern="%d [%t] %-5p [processor: %X{processorPath}; event: %X{correlationId}] %c - %m%n" />
             <SizeBasedTriggeringPolicy size="10 KB" />
             <DefaultRolloverStrategy max="10"/>
