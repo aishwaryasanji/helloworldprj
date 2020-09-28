@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -8,7 +7,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
-	<name>helloworld</name>
+	<name>CICDproject</name>
 
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,14 +33,15 @@
                    <armDeployment>
                                    <muleVersion>4.3.0</muleVersion>
                                    <uri>https://anypoint.mulesoft.com</uri>
-                                   <target>demoserver</target>
+                                   <target>QA2-MuleServer</target>
                                    <targetType>server</targetType>
                                    <username>aishwaryasanji</username>
                                    <password>Mulesoft123@!</password>
-                                   <environment>Sandbox</environment>>
+                                   <environment>Sandbox</environment>&gt;
                     </armDeployment>
                            <sharedLibraries>
                     </sharedLibraries>
+                <classifier>mule-application</classifier>
                 </configuration>
 
 			</plugin>
